@@ -1,3 +1,11 @@
+#develop by syz
+
+#it is a project for velodyne-32c and ibeo fusion object detection and tracking project 
+
+
+#edit by syz 2019/10/28
+
+
 Detection and Tracking of Moving Objects with 2D LIDAR
 ========================================
 # Overview 
