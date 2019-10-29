@@ -104,16 +104,20 @@ void Datmo::callback(const sensor_msgs::LaserScan::ConstPtr& scan_in){
 
     //Find the smallest euclidean distance and associate if smaller than the threshold 
     vector<pair <int,int>> pairs;
-    for(unsigned int c=0; c<clusters.size();++c){
+    for(unsigned int c=0; c<clusters.size();++c)
+    {
       unsigned int position;
       double min_distance = euclidean_distance;
-      for(unsigned int g=0; g<point_clusters.size();++g){
-    if(euclidean[g][c] < min_distance){
-      min_distance = euclidean[g][c];
-      position = g;
-    }
+      for(unsigned int g=0; g<point_clusters.size();++g)
+      {
+        if(euclidean[g][c] < min_distance)
+        {
+            min_distance = euclidean[g][c];
+            position = g;
+        }
       }
-      if(min_distance < euclidean_distance){
+      if(min_distance < euclidean_distance)
+      {
         g_matched[position] = true, c_matched[c] = true;
         pairs.push_back(pair<int,int>(c,position));
       }
