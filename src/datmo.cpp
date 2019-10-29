@@ -133,9 +133,10 @@ void Datmo::callback(const sensor_msgs::LaserScan::ConstPtr& scan_in){
      //Delete Not Associated Clusters
     unsigned int o=0;
     unsigned int p = clusters.size();
-    while(o<p){
-      if(c_matched[o] == false){
-
+    while(o<p)
+    {
+      if(c_matched[o] == false)
+      {
         std::swap(clusters[o], clusters.back());
         clusters.pop_back();
 
@@ -145,12 +146,14 @@ void Datmo::callback(const sensor_msgs::LaserScan::ConstPtr& scan_in){
         o--;
         p--;
       }
-    o++;
+      o++;
     }
 
     // Initialisation of new Cluster Objects
-    for(unsigned int i=0; i<point_clusters.size();++i){
-      if(g_matched[i] == false){
+    for(unsigned int i=0; i<point_clusters.size();++i)
+    {
+      if(g_matched[i] == false)
+      {
         Cluster cl(cclusters, point_clusters[i], dt, world_frame, ego_pose);
         cclusters++;
         clusters.push_back(cl);
@@ -169,7 +172,8 @@ void Datmo::callback(const sensor_msgs::LaserScan::ConstPtr& scan_in){
       filtered_track_array.tracks.push_back(clusters[i].msg_track_mean_kf);
       box_track_array.tracks.push_back(clusters[i].msg_track_box);
      
-      if (p_marker_pub){
+      if (p_marker_pub)
+      {
         marker_array.markers.push_back(clusters[i].getBoundingBoxCenterVisualisationMessage());
         marker_array.markers.push_back(clusters[i].getArrowVisualisationMessage());
         marker_array.markers.push_back(clusters[i].getThetaL1VisualisationMessage());
@@ -183,7 +187,8 @@ void Datmo::callback(const sensor_msgs::LaserScan::ConstPtr& scan_in){
         marker_array.markers.push_back(clusters[i].getPoseCovariance());
       };
 
-      if (w_exec_times){
+      if (w_exec_times)
+      {
         
         //rect_fitting << clusters[i].getRectangleFittingExecutionTime().first<<",";
         rect_fitting << clusters[i].getRectangleFittingExecutionTime().first<<"\n";
